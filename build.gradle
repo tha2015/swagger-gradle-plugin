@@ -1,0 +1,45 @@
+// First, apply the publishing plugin
+plugins {
+  id "com.gradle.plugin-publish" version "0.10.0"
+  id "java-gradle-plugin"
+  id "groovy"
+}
+
+repositories {
+  jcenter()
+}
+
+
+version = "1.0.0"
+group = "com.tha2015.swagger-gradle-plugin"
+
+dependencies {
+	compile gradleApi()
+	compile localGroovy()
+	testCompile 'junit:junit:4.12'
+}
+
+// Use java-gradle-plugin to generate plugin descriptors and specify plugin ids
+gradlePlugin {
+  plugins {
+    swaggerPlugin {
+      id = 'com.tha2015.swagger-gradle-plugin'
+      implementationClass = 'swaggergen.SwaggerGenPlugin'
+    }
+  }
+}
+pluginBundle {
+  // These settings are set for the whole plugin bundle
+  website = 'https://github.com/tha2015/swagger-gradle-plugin'
+  vcsUrl = 'https://github.com/tha2015/swagger-gradle-plugin'
+  description = 'Generate swagger.json from annotated RESTful Java classes'
+
+  plugins {
+    swaggerPlugin {
+      displayName = 'Swagger Gradle plugin'
+      tags = ['swagger', 'plugin']
+      version = '1.0.0'
+    }
+
+  }
+}

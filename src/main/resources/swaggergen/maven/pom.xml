@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example</groupId>
+	<artifactId>swaggergen</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+
+		<custom.lib.jarall>${basedir}/libs/all.jar</custom.lib.jarall>
+		<custom.swagger.version>3.1.7</custom.swagger.version>
+		<custom.api.version>0.1</custom.api.version>
+		<custom.api.title>Demo Docs</custom.api.title>
+		<custom.api.location>com.demo.service</custom.api.location>
+		<custom.api.basePath>/demo-api</custom.api.basePath>
+		<custom.api.targetPath>${project.build.directory}/swagger-ui</custom.api.targetPath>
+		<custom.api.html.outputPath>${project.build.directory}/document.html</custom.api.html.outputPath>
+
+
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>fatjar</groupId>
+			<artifactId>fatjar</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${custom.lib.jarall}</systemPath>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+		<!-- Generate swagger.json using command "mvnw swagger:generate" -->
+		<plugin>
+			<groupId>com.github.kongchen</groupId>
+			<artifactId>swagger-maven-plugin</artifactId>
+			<version>${custom.swagger.version}</version>
+			<configuration>
+				<apiSources>
+					<apiSource>
+
+					<springmvc>false</springmvc>
+					<basePath>${custom.api.basePath}</basePath>
+
+					<locations><location>${custom.api.location}</location></locations>
+					<info>
+						<title>${custom.api.title}</title>
+						<version>${custom.api.version}</version>
+					</info>
+
+					<swaggerDirectory>${custom.api.targetPath}</swaggerDirectory>
+					<templatePath>${basedir}/templates/strapdown.html.hbs</templatePath>
+					<outputPath>${custom.api.html.outputPath}</outputPath>
+
+					</apiSource>
+				</apiSources>
+			</configuration>
+
+		</plugin>
+		</plugins>
+	</build>
+
+
+</project>
