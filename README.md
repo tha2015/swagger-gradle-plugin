@@ -4,7 +4,7 @@
 
 A plugin to help to generate swagger.json file from annotated Java classes. It is  like https://github.com/kongchen/swagger-maven-plugin but for Gradle project.
 
-This project is based on kongchen's swagger-maven-plugin (https://github.com/kongchen/swagger-maven-plugin)
+This project is a wapper for kongchen's swagger-maven-plugin (https://github.com/kongchen/swagger-maven-plugin) to be used from Gradle. Internally it will use a Maven project to generate swagger.json file. 
 
 ## Usage
 
