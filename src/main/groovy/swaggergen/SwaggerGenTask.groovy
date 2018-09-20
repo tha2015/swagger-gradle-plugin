@@ -104,7 +104,6 @@ public class SwaggerGenTask extends DefaultTask {
 			arg (value: "/c")
 			arg (value: "mvnw")
 			arg (value: "swagger:generate")
-			arg (value: "--debug")
 
 			arg (value: "-Dcustom.api.version=${version}")
 			arg (value: "-Dcustom.api.title=${title}")
@@ -121,7 +120,6 @@ public class SwaggerGenTask extends DefaultTask {
 			arg (value: "-c")
 			arg (value:
 				"./mvnw swagger:generate"
-				+ " --debug "
 				+ " \"-Dcustom.api.version=${version}\""
 				+ " \"-Dcustom.api.title=${title}\""
 				+ " \"-Dcustom.api.location=${location}\""

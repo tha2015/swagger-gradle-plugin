@@ -38,7 +38,7 @@ pluginBundle {
     swaggerPlugin {
       displayName = 'Swagger Gradle plugin'
       tags = ['swagger', 'plugin']
-      version = '1.0.0'
+      version = '1.0.1'
     }
 
   }
