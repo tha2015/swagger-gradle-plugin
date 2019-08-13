@@ -59,7 +59,7 @@
 					<swaggerDirectory>${custom.api.targetPath}</swaggerDirectory>
 					<templatePath>${basedir}/templates/strapdown.html.hbs</templatePath>
 					<outputPath>${custom.api.html.outputPath}</outputPath>
-
+					<outputFormats>json</outputFormats>
 					</apiSource>
 				</apiSources>
 			</configuration>
