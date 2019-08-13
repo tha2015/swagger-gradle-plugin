@@ -23,6 +23,8 @@ public class SwaggerGenTask extends DefaultTask {
 	def htmlTargetPath = new File(project.buildDir, "swagger.html").absolutePath
 	@Input
 	def classPath = project.configurations.compile
+	@Input
+	def swaggerMavenPluginVersion = "3.1.7"
 
 	@TaskAction
 	def generate() {
@@ -106,6 +108,7 @@ public class SwaggerGenTask extends DefaultTask {
 			arg (value: "swagger:generate")
 
 			arg (value: "-Dcustom.api.version=${version}")
+			arg (value: "-Dcustom.swagger.version=${swaggerMavenPluginVersion}")
 			arg (value: "-Dcustom.api.title=${title}")
 			arg (value: "-Dcustom.api.location=${location}")
 			arg (value: "-Dcustom.api.basePath=${basePath}")
@@ -121,6 +124,7 @@ public class SwaggerGenTask extends DefaultTask {
 			arg (value:
 				"./mvnw swagger:generate"
 				+ " \"-Dcustom.api.version=${version}\""
+				+ " \"-Dcustom.swagger.version=${swaggerMavenPluginVersion}\""
 				+ " \"-Dcustom.api.title=${title}\""
 				+ " \"-Dcustom.api.location=${location}\""
 				+ " \"-Dcustom.api.basePath=${basePath}\""
